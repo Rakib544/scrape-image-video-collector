@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home/Home';
 import Images from './components/Images/Images';
 import Navbar from './components/Navbar/Navbar';
+import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 
 function App() {
@@ -11,11 +12,11 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path="/" exact>
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path="/sign-in">
-            <Home />
+            <SignIn />
           </Route>
           <Route path="/sing-up">
             <SignUp />
