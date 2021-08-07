@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 
 const Navbar = () => {
+  const [loggedUser, setLoggedUser] = useContext(UserContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark pt-3 pb-2">
       <div className="container-fluid">
@@ -32,24 +35,34 @@ const Navbar = () => {
                 Videos
               </Link>
             </p>
-            <p className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/sign-in"
-              >
-                SingIn
-              </Link>
-            </p>
-            <p className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/sing-up"
-              >
-                SingUp
-              </Link>
-            </p>
+            {loggedUser ? (
+              <>
+                <p className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/sign-in"
+                  >
+                    SingIn
+                  </Link>
+                </p>
+                <p className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/sing-up"
+                  >
+                    SingUp
+                  </Link>
+                </p>{" "}
+              </>
+            ) : (
+              <p className="nav-item" onClick={() => setLoggedUser({})}>
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Logout
+                </Link>
+              </p>
+            )}
           </div>
         </div>
       </div>

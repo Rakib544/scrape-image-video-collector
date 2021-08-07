@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 
 const SignIn = () => {
+  const [showSpinner, setShowSpinner] = useState(false);
   const [loggedUser, setLoggedUser] = useContext(UserContext);
   const {
     register,
@@ -11,13 +12,17 @@ const SignIn = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    setShowSpinner(true);
     fetch("http://localhost:8000/login", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => setLoggedUser(data[0]));
+      .then((data) => {
+        setShowSpinner(false);
+        setLoggedUser(data[0]);
+      });
   };
 
   console.log(loggedUser);
@@ -25,6 +30,13 @@ const SignIn = () => {
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="container col-12 col-md-8 col-lg-6">
         <div className="text-center">
+          {showSpinner ? (
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            ""
+          )}
           <h1 className="fw-bold my-4">Sign In</h1>
         </div>
         <form
