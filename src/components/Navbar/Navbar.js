@@ -4,6 +4,7 @@ import { UserContext } from "../../App";
 
 const Navbar = () => {
   const [loggedUser, setLoggedUser] = useContext(UserContext);
+  console.log(loggedUser);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark pt-3 pb-2">
       <div className="container-fluid">
@@ -21,21 +22,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <div className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <p className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
-                Images
-              </Link>
-            </p>
-            <p className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/videos"
-              >
-                Videos
-              </Link>
-            </p>
-            {loggedUser ? (
+            {!loggedUser.email ? (
               <>
                 <p className="nav-item">
                   <Link

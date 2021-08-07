@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../App";
 
 const SignIn = () => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [loggedUser, setLoggedUser] = useContext(UserContext);
+  const history = useHistory();
   const {
     register,
     handleSubmit,
@@ -22,6 +23,7 @@ const SignIn = () => {
       .then((data) => {
         setShowSpinner(false);
         setLoggedUser(data[0]);
+        history.push('/');
       });
   };
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Images from "./components/Images/Images";
 import Navbar from "./components/Navbar/Navbar";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import Videos from "./components/Videos/Videos";
@@ -16,21 +17,23 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path="/" exact>
-            <Images />
-          </Route>
+
           <Route path="/sign-in">
             <SignIn />
           </Route>
+
           <Route path="/sign-up">
             <SignUp />
           </Route>
+
           <Route path="/images">
             <Images />
           </Route>
-          <Route path="/videos">
-            <Videos />
-          </Route>
+
+          <PrivateRoute path="/">
+            <Images />
+          </PrivateRoute>
+
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
