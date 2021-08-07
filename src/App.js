@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Images from "./components/Images/Images";
@@ -6,9 +7,12 @@ import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import Videos from "./components/Videos/Videos";
 
+export const UserContext = createContext();
+
 function App() {
+  const [loggedUser, setLoggedUser] = useState({});
   return (
-    <>
+    <UserContext.Provider value={[loggedUser, setLoggedUser]}>
       <BrowserRouter>
         <Navbar />
         <Switch>
@@ -18,7 +22,7 @@ function App() {
           <Route path="/sign-in">
             <SignIn />
           </Route>
-          <Route path="/sing-up">
+          <Route path="/sign-up">
             <SignUp />
           </Route>
           <Route path="/images">
@@ -29,7 +33,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-    </>
+    </UserContext.Provider>
   );
 }
 
