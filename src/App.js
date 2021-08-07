@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
-import Home from "./components/Home/Home";
-import Images from "./components/Images/Images";
-import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './App.css';
+import Home from './components/Home/Home';
+import Images from './components/Images/Images';
+import Navbar from './components/Navbar/Navbar';
+import SignUp from './components/SignUp/SignUp';
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
           <Route path="/sign-in">
             <Home />
           </Route>
-          <Route path="/sign-up">
-            <Home />
+          <Route path="/sing-up">
+            <SignUp />
           </Route>
           <Route path="/images">
             <Images />
