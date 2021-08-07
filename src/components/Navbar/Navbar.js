@@ -28,7 +28,7 @@ const Navbar = () => {
               <Link
                 className="nav-link active"
                 aria-current="page"
-                to="/sing-in"
+                to="/sign-in"
               >
                 SingIn
               </Link>
