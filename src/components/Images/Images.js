@@ -8,7 +8,7 @@ const Images = () => {
   const totalPage = Math.ceil(100 / 5);
 
   const handlePageChange = (page) => {
-    history.push(`/admin/complete-orders?page=${page.selected + 1}`);
+    history.push(`/images?page=${page.selected + 1}`);
   };
   return (
     <div className="container">

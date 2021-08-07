@@ -1,6 +1,13 @@
-import React from "react";
+import ReactPaginate from "react-paginate";
+import { useHistory } from "react-router-dom";
 
 const Videos = () => {
+  const history = useHistory();
+  const totalPage = Math.ceil(100 / 5);
+
+  const handlePageChange = (page) => {
+    history.push(`/videos?page=${page.selected + 1}`);
+  };
   return (
     <div className="container">
       <div className="d-flex justify-content-between my-3">
@@ -19,6 +26,9 @@ const Videos = () => {
             <option value="3">Three</option>
           </select>
         </div>
+      </div>
+      <div className="d-flex justify-content-end my-3">
+        <ReactPaginate pageCount={totalPage} onPageChange={handlePageChange} />
       </div>
     </div>
   );
