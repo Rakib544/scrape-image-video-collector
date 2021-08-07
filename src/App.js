@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home/Home";
 import Images from "./components/Images/Images";
 import Navbar from "./components/Navbar/Navbar";
+import Videos from "./components/Videos/Videos";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <Images />
           </Route>
           <Route path="/sign-in">
             <Home />
@@ -23,7 +24,7 @@ function App() {
             <Images />
           </Route>
           <Route path="/videos">
-            <Home />
+            <Videos />
           </Route>
         </Switch>
       </BrowserRouter>
